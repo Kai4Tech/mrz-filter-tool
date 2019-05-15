@@ -1,30 +1,30 @@
 from PIL import Image, ImageEnhance
 
-def increase_contrast(img, level):  # 0~127
-    image = Image.open(img).convert("RGBA")
+def increase_contrast(img_name, level):  # 0~127
+    image = Image.open(img_name).convert("RGBA")
     factor = (259 * (level + 255)) / (255 * (259 - level))
 
     def contrast(c):
         value = 128 + factor * (c - 128)
         return max(0, min(255, value))
     new_frame = image.point(contrast)
-    path = frame_save(img, new_frame)
+    path = frame_save(img_name, new_frame)
     return path, new_frame
 
 
-def increase_contrast2(img, level):  # 0~3, 1 is original
-    image = Image.open(img).convert("RGBA")
+def increase_contrast2(img_name, level):  # 0~3, 1 is original
+    image = Image.open(img_name).convert("RGBA")
     factor = ImageEnhance.Contrast(image)
     factor_im = factor.enhance(level)
-    path = frame_save(img, factor_im)
+    path = frame_save(img_name, factor_im)
     return path, factor_im
 
 
-def increase_brightness(img, level):  # 0~5 , 1 is original
-    image = Image.open(img).convert("RGBA")
+def increase_brightness(img_name, level):  # 0~5 , 1 is original
+    image = Image.open(img_name).convert("RGBA")
     factor = ImageEnhance.Brightness(image)
     factor_im = factor.enhance(level)
-    path = frame_save(img, factor_im)
+    path = frame_save(img_name, factor_im)
     return path, factor_im
 
 

@@ -9,5 +9,6 @@ setup(
                   'Change contrast or brightness to let score higher',
     author='Kai4Tech',
     author_email='ttocs321ttocs@yahoo.com.tw',
-    keywords='mrz-filter-tool'
+    keywords='mrz-filter-tool',
+    install_requires=['Passporteye', 'tesseract', 'Pillow']
 )
